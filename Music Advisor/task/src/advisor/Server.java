@@ -1,7 +1,6 @@
 package advisor;
 
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -12,59 +11,63 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Server {
-    private static HttpServer server = null;
+    //    private static HttpServer server = null;
+    private static Server server;
+    private static String code = "";
 
     private Server() {
-
     }
 
-    static {
-        server = createServer();
-    }
-
-    private static HttpServer createServer() {
-        HttpServer server = null;
-        try {
-            server = HttpServer.create();
-            server.bind(new InetSocketAddress(8080), 0);
-            HttpServer finalServer = server;
-            server.createContext("/",
+    static void createAndStartServer(String serverUrl) throws IOException {
+        if (server == null) {
+            int index = serverUrl.lastIndexOf(':') + 1;
+            HttpServer httpServer = null;
+            httpServer = HttpServer.create();
+            httpServer.bind(new InetSocketAddress(Integer.parseInt(serverUrl.substring(index))), 0);
+            httpServer.start();
+            server = new Server();
+            HttpServer finalServer = httpServer;
+            httpServer.createContext("/",
                     exchange -> {
-                        try {
-                            String query = exchange.getRequestURI().getQuery();
-                            if (!query.equals("error=access_denied")) {
-                                printMessage("Got the code. Return back to your program.", exchange);
-                                processRequest(exchange.getRequestURI().getQuery());
-                                finalServer.stop(1);
-                            } else {
-                                printMessage("Authorization code not found. Try again.", exchange);
+                        String query = exchange.getRequestURI().getQuery();
+                        if (query != null && query.contains("code")) {
+                            code = query;
+                            try {
+                                accessToken(serverUrl);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            renderMessage("Got the code. Return back to your program.", exchange);
+                        } else {
+                            renderMessage("Not found authorization code. Try again.", exchange);
                         }
                     }
             );
-        } catch (IOException e) {
-            e.printStackTrace();
+            while (code.equals("")) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            finalServer.stop(1);
         }
-        return server;
     }
 
-    static void startServer() {
+/*    static void startServer(String serverUrl) {
         if (server != null) {
             server.start();
         }
-    }
+    }*/
 
-    private static void printMessage(String message, HttpExchange exchange) throws IOException {
+    private static void renderMessage(String message, HttpExchange exchange) throws IOException {
         exchange.sendResponseHeaders(200, message.length());
         exchange.getResponseBody().write(message.getBytes());
         exchange.getResponseBody().close();
     }
 
-    private static void processRequest(String parameter) throws IOException, InterruptedException {
+    static void accessToken(String serverUrl) throws IOException, InterruptedException {
         System.out.println("code received");
-
         System.out.println("making http request for access_token...");
         HttpClient client = HttpClient.newBuilder().build();
         HttpRequest request = HttpRequest.newBuilder()
@@ -74,8 +77,8 @@ public class Server {
                         "client_id=" + Config.CLIENT_ID +
                                 "&client_secret=" + Config.CLIENT_SECRET +
                                 "&grant_type=authorization_code&" +
-                                parameter +
-                                "&redirect_uri=http://localhost:8080"))
+                                code +
+                                "&redirect_uri=" + serverUrl))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println("response:\n" + response.body());

@@ -6,12 +6,10 @@ import java.io.InputStreamReader;
 
 public class Main {
     private static boolean access = false;
-    private static final String URL = "https://accounts.spotify.com/authorize?" +
-            "client_id=c272e24c020d428f848594eea7f5199d&" +
-            "redirect_uri=http://localhost:8080&response_type=code";
 
     public static void main(String[] args) throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String serverUrl = args[1];
         Advice advice = new Advice();
         while (true) {
             switch (reader.readLine()) {
@@ -48,7 +46,8 @@ public class Main {
                     }
                     break;
                 case "auth":
-                    authentication();
+                    doAuthentication(serverUrl);
+//                    Server.accessToken(serverUrl);
                     break;
                 case "exit":
                     System.out.println("---GOODBYE!---");
@@ -64,12 +63,15 @@ public class Main {
     }
 
 
-    private static void authentication() throws InterruptedException, IOException {
+    private static void doAuthentication(String serverUrl) throws InterruptedException, IOException {
         access = true;
-        Server.startServer();
+        Server.createAndStartServer(serverUrl);
+        String URL = "https://accounts.spotify.com/authorize?" +
+                "client_id=c272e24c020d428f848594eea7f5199d&" +
+                "redirect_uri=" + serverUrl + "&response_type=code";
         System.out.printf("use this link to request the access code:%n%s%n", URL);
         System.out.println("waiting for code...");
-        Thread.sleep(3000);
+//        Thread.sleep(5000);
 //        System.out.println("---SUCCESS---");
     }
 

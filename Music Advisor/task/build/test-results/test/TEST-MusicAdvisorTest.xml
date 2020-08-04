@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-08-04T13:41:29" hostname="DESKTOP-RLTM6OB" time="1.37">
+<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-08-04T17:21:43" hostname="DESKTOP-RLTM6OB" time="9.163">
   <properties/>
-  <testcase name="start" classname="MusicAdvisorTest" time="1.37">
-    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Not received any response from the server, found in redirect_uri: http://localhost:8080&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -access http://127.0.0.1:45678&#10;&#10;&gt; auth&#10;use this link to request the access code:&#10;https://accounts.spotify.com/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code&#10;waiting for code...&#10;Tester: making requests to redirect uri: http://localhost:8080&#10;code received&#10;making http request for access_token...&#10;Tester: done request 1: Got the code. Return back to your program." type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
+  <testcase name="start" classname="MusicAdvisorTest" time="9.163">
+    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Not found a link with redirect_uri after 9 seconds.&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -access http://127.0.0.1:45678&#10;&#10;&gt; auth" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
 
-Not received any response from the server, found in redirect_uri: http://localhost:8080
+Not found a link with redirect_uri after 9 seconds.
 
 Please find below the output of your program during this failed test.
 Note that the '&gt;' character indicates the beginning of the input line.
@@ -14,13 +14,6 @@ Note that the '&gt;' character indicates the beginning of the input line.
 Arguments: -access http://127.0.0.1:45678
 
 &gt; auth
-use this link to request the access code:
-https://accounts.spotify.com/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
-waiting for code...
-Tester: making requests to redirect uri: http://localhost:8080
-code received
-making http request for access_token...
-Tester: done request 1: Got the code. Return back to your program.
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:103)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -76,30 +69,6 @@ Tester: done request 1: Got the code. Return back to your program.
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 > auth
-use this link to request the access code:
-https://accounts.spotify.com/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-Tester: making requests to redirect uri: http://localhost:8080
-code received
-making http request for access_token...
-Tester: done request 1: Got the code. Return back to your program.
 ]]></system-out>
-  <system-err><![CDATA[java.lang.InterruptedException
-	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
-	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1999)
-	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:541)
-	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:119)
-	at advisor.Server.processRequest(Server.java:68)
-	at advisor.Server.lambda$createServer$0(Server.java:37)
-	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
-	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
-	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:80)
-	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:692)
-	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
-	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:664)
-	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
-	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
-	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
