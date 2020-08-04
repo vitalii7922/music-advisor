@@ -368,6 +368,34 @@ files:
         }
     }
   learner_created: true
+- name: src/advisor/Server.java
+  visible: true
+  learner_created: true
+- name: src/advisor/Config.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/62/stages/337/implement
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #1
+
+    Not received any response from the server, found in redirect_uri: http://localhost:8080
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    Arguments: -access http://127.0.0.1:45678
+
+    &gt; auth
+    use this link to request the access code:
+    https://accounts.spotify.com/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
+    waiting for code...
+    Tester: making requests to redirect uri: http://localhost:8080
+    code received
+    making http request for access_token...
+    Tester: done request 1: Got the code. Return back to your program.
+  time: Tue, 04 Aug 2020 13:41:31 UTC
 record: -1

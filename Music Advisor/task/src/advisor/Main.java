@@ -9,7 +9,8 @@ public class Main {
     private static final String URL = "https://accounts.spotify.com/authorize?" +
             "client_id=c272e24c020d428f848594eea7f5199d&" +
             "redirect_uri=http://localhost:8080&response_type=code";
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Advice advice = new Advice();
         while (true) {
@@ -63,9 +64,15 @@ public class Main {
     }
 
 
-    private static void authentication() {
-            access = true;
-            System.out.println(URL);
-            System.out.println("---SUCCESS---");
+    private static void authentication() throws InterruptedException, IOException {
+        access = true;
+        Server.startServer();
+        System.out.printf("use this link to request the access code:%n%s%n", URL);
+        System.out.println("waiting for code...");
+        Thread.sleep(3000);
+//        System.out.println("---SUCCESS---");
     }
+
+
+
 }
