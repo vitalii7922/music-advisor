@@ -15,9 +15,8 @@ public class Main {
         } else {
             accessServer = "https://accounts.spotify.com";
         }
-        Advice advice = new Advice();
-        String option = reader.readLine();
         while (true) {
+            String option = reader.readLine();
             switch (option) {
                 case "new":
                     if (Server.isAccess()) {
@@ -39,17 +38,8 @@ public class Main {
                         Server.getCategories();
                     } else {
                         System.out.println(DENY_ACCESS);
-                        ;
                     }
                     break;
-                /*case "playlists":
-                    if (Server.isAccess()) {
-                        System.out.println("---MOOD PLAYLISTS---");
-                        advice.getCategories().forEach(System.out::println);
-                    } else {
-                        System.out.println(DENY_ACCESS);
-                    }
-                    break;*/
                 case "auth":
                     doAuthentication();
                     Server.accessToken(accessServer);

@@ -84,9 +84,9 @@ public class Server {
 
     public static void getNewReleases() throws IOException, InterruptedException {
         JsonObject jo = JsonParser.parseString(sendGetRequest("new-releases")).getAsJsonObject();
-        JsonObject album = jo.getAsJsonObject("albums");
+        JsonObject albums = jo.getAsJsonObject("albums");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        JsonArray albumArray = album.getAsJsonArray("items");
+        JsonArray albumArray = albums.getAsJsonArray("items");
 //        System.out.println(gson.toJson(album));
         List<JsonElement> result = IntStream.range(0, albumArray.size())
                 .mapToObj(albumArray::get)
@@ -94,15 +94,15 @@ public class Server {
 //        result.stream().map(JsonElement::getAsJsonObject).collect(Collectors.toList()).forEach(System.out::println);
 //        result.forEach(System.out::println);
         List<String> musiciansNames = new ArrayList<>();
-        for (JsonElement jsonElement : albumArray.getAsJsonArray()) {
-            System.out.println(jsonElement.getAsJsonObject().get("name").getAsString());
-            for (JsonElement x : jsonElement.getAsJsonObject().getAsJsonArray("artists")) {
+        for (JsonElement album : albumArray.getAsJsonArray()) {
+            System.out.println(album.getAsJsonObject().get("name").getAsString());
+            for (JsonElement artist : album.getAsJsonObject().getAsJsonArray("artists")) {
 //                System.out.println("[" + x.getAsJsonObject().get("name").getAsString() + "]");
-                musiciansNames.add(x.getAsJsonObject().get("name").getAsString());
+                musiciansNames.add(artist.getAsJsonObject().get("name").getAsString());
             }
             System.out.println(musiciansNames);
             musiciansNames.clear();
-            System.out.println(jsonElement.getAsJsonObject().get("external_urls")
+            System.out.println(album.getAsJsonObject().get("external_urls")
                     .getAsJsonObject().get("spotify").getAsString());
             System.out.println();
         }
