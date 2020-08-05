@@ -11,32 +11,28 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Server {
-    //    private static HttpServer server = null;
+    static final String CLIENT_ID = "c272e24c020d428f848594eea7f5199d";
+    static final String CLIENT_SECRET = "583af1b361fb47598bd14c9f1fdf386c";
     private static Server server;
     private static String code = "";
+    private static boolean access = false;
+    private static String accessToken;
 
     private Server() {
     }
 
-    static void createAndStartServer(String serverUrl) throws IOException {
+    static void createAndStartServer() throws IOException {
         if (server == null) {
-            int index = serverUrl.lastIndexOf(':') + 1;
             HttpServer httpServer = null;
             httpServer = HttpServer.create();
-            httpServer.bind(new InetSocketAddress(Integer.parseInt(serverUrl.substring(index))), 0);
+            httpServer.bind(new InetSocketAddress(8080), 0);
             httpServer.start();
             server = new Server();
-            HttpServer finalServer = httpServer;
             httpServer.createContext("/",
                     exchange -> {
                         String query = exchange.getRequestURI().getQuery();
                         if (query != null && query.contains("code")) {
                             code = query;
-                            try {
-                                accessToken(serverUrl);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
                             renderMessage("Got the code. Return back to your program.", exchange);
                         } else {
                             renderMessage("Not found authorization code. Try again.", exchange);
@@ -50,15 +46,9 @@ public class Server {
                     e.printStackTrace();
                 }
             }
-            finalServer.stop(1);
+            httpServer.stop(1);
         }
     }
-
-/*    static void startServer(String serverUrl) {
-        if (server != null) {
-            server.start();
-        }
-    }*/
 
     private static void renderMessage(String message, HttpExchange exchange) throws IOException {
         exchange.sendResponseHeaders(200, message.length());
@@ -66,21 +56,31 @@ public class Server {
         exchange.getResponseBody().close();
     }
 
-    static void accessToken(String serverUrl) throws IOException, InterruptedException {
+    static void accessToken(String accessServer) throws IOException, InterruptedException {
         System.out.println("code received");
         System.out.println("making http request for access_token...");
         HttpClient client = HttpClient.newBuilder().build();
         HttpRequest request = HttpRequest.newBuilder()
                 .header("Content-Type", "application/x-www-form-urlencoded")
-                .uri(URI.create("https://accounts.spotify.com/api/token"))
+                .uri(URI.create(accessServer + "/api/token"))
                 .POST(HttpRequest.BodyPublishers.ofString(
-                        "client_id=" + Config.CLIENT_ID +
-                                "&client_secret=" + Config.CLIENT_SECRET +
+                        "client_id=" + CLIENT_ID +
+                                "&client_secret=" + CLIENT_SECRET +
                                 "&grant_type=authorization_code&" +
                                 code +
-                                "&redirect_uri=" + serverUrl))
+                                "&redirect_uri=http://localhost:8080"))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println("response:\n" + response.body());
+        setAccess(true);
+        System.out.println("Success!");
+    }
+
+    public static boolean isAccess() {
+        return access;
+    }
+
+    public static void setAccess(boolean access) {
+        Server.access = access;
     }
 }

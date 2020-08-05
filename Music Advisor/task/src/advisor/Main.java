@@ -5,49 +5,57 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    private static boolean access = false;
+    private static final String DENY_ACCESS = "Please, provide access for application.";
+    private static String accessServer = null;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String serverUrl = args[1];
+        if (args.length != 0 && args[0].contains("-access")) {
+            accessServer = args[1];
+        } else {
+            accessServer = "https://accounts.spotify.com";
+        }
         Advice advice = new Advice();
         while (true) {
             switch (reader.readLine()) {
                 case "new":
-                    if (access) {
+                    if (Server.isAccess()) {
                         System.out.println("---NEW RELEASES---");
                         advice.getNewReleases().forEach(System.out::println);
                     } else {
-                        printMessage();
+                        System.out.println(DENY_ACCESS);
+                        ;
                     }
                     break;
                 case "featured":
-                    if (access) {
+                    if (Server.isAccess()) {
                         System.out.println("---FEATURED---");
                         advice.getFeatured().forEach(System.out::println);
                     } else {
-                        printMessage();
+                        System.out.println(DENY_ACCESS);
                     }
                     break;
                 case "categories":
-                    if (access) {
-                        System.out.println("---CATEGORIES---");
+                    System.out.println("---CATEGORIES---");
+                    if (Server.isAccess()) {
                         advice.getCategories().forEach(System.out::println);
                     } else {
-                        printMessage();
+                        System.out.println(DENY_ACCESS);
+                        ;
                     }
                     break;
                 case "playlists Mood":
-                    if (access) {
+                    if (Server.isAccess()) {
                         System.out.println("---MOOD PLAYLISTS---");
                         advice.getCategories().forEach(System.out::println);
                     } else {
-                        printMessage();
+                        System.out.println(DENY_ACCESS);
+                        ;
                     }
                     break;
                 case "auth":
-                    doAuthentication(serverUrl);
-//                    Server.accessToken(serverUrl);
+                    doAuthentication();
+                    Server.accessToken(accessServer);
                     break;
                 case "exit":
                     System.out.println("---GOODBYE!---");
@@ -58,23 +66,13 @@ public class Main {
         }
     }
 
-    private static void printMessage() {
-        System.out.println("Please, provide access for application.");
-    }
 
-
-    private static void doAuthentication(String serverUrl) throws InterruptedException, IOException {
-        access = true;
-        Server.createAndStartServer(serverUrl);
-        String URL = "https://accounts.spotify.com/authorize?" +
+    private static void doAuthentication() throws IOException {
+        String URL = accessServer + "/authorize?" +
                 "client_id=c272e24c020d428f848594eea7f5199d&" +
-                "redirect_uri=" + serverUrl + "&response_type=code";
+                "redirect_uri=http://localhost:8080&response_type=code";
         System.out.printf("use this link to request the access code:%n%s%n", URL);
         System.out.println("waiting for code...");
-//        Thread.sleep(5000);
-//        System.out.println("---SUCCESS---");
+        Server.createAndStartServer();
     }
-
-
-
 }
