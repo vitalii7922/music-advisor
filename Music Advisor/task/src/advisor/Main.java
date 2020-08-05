@@ -16,21 +16,19 @@ public class Main {
             accessServer = "https://accounts.spotify.com";
         }
         Advice advice = new Advice();
+        String option = reader.readLine();
         while (true) {
-            switch (reader.readLine()) {
+            switch (option) {
                 case "new":
                     if (Server.isAccess()) {
-                        System.out.println("---NEW RELEASES---");
-                        advice.getNewReleases().forEach(System.out::println);
+                        Server.getNewReleases();
                     } else {
                         System.out.println(DENY_ACCESS);
-                        ;
                     }
                     break;
                 case "featured":
                     if (Server.isAccess()) {
-                        System.out.println("---FEATURED---");
-                        advice.getFeatured().forEach(System.out::println);
+                        Server.getFeatured();
                     } else {
                         System.out.println(DENY_ACCESS);
                     }
@@ -38,21 +36,20 @@ public class Main {
                 case "categories":
                     System.out.println("---CATEGORIES---");
                     if (Server.isAccess()) {
-                        advice.getCategories().forEach(System.out::println);
+                        Server.getCategories();
                     } else {
                         System.out.println(DENY_ACCESS);
                         ;
                     }
                     break;
-                case "playlists Mood":
+                /*case "playlists":
                     if (Server.isAccess()) {
                         System.out.println("---MOOD PLAYLISTS---");
                         advice.getCategories().forEach(System.out::println);
                     } else {
                         System.out.println(DENY_ACCESS);
-                        ;
                     }
-                    break;
+                    break;*/
                 case "auth":
                     doAuthentication();
                     Server.accessToken(accessServer);
@@ -61,6 +58,11 @@ public class Main {
                     System.out.println("---GOODBYE!---");
                     return;
                 default:
+                    if (option.startsWith("playlists") && Server.isAccess()) {
+                        Server.getPlaylists(option.split("\\s+")[1]);
+                    } else {
+                        System.out.println(DENY_ACCESS);
+                    }
                     break;
             }
         }
