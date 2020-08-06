@@ -3,39 +3,43 @@ package advisor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Main {
     private static final String DENY_ACCESS = "Please, provide access for application.";
     private static String accessServer = null;
+    private static String resourceServer = null;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         if (args.length != 0 && args[0].contains("-access")) {
             accessServer = args[1];
+        } else if (args.length != 0 && args[0].contains("-resource")){
+            resourceServer = args[1];
         } else {
             accessServer = "https://accounts.spotify.com";
+            resourceServer = "https://api.spotify.com";
         }
         while (true) {
             String option = reader.readLine();
             switch (option) {
                 case "new":
                     if (Server.isAccess()) {
-                        Server.getNewReleases();
+                        Server.getNewReleases(resourceServer);
                     } else {
                         System.out.println(DENY_ACCESS);
                     }
                     break;
                 case "featured":
                     if (Server.isAccess()) {
-                        Server.getFeatured();
+                        Server.getFeatured(resourceServer);
                     } else {
                         System.out.println(DENY_ACCESS);
                     }
                     break;
                 case "categories":
-                    System.out.println("---CATEGORIES---");
                     if (Server.isAccess()) {
-                        Server.getCategories();
+                        Server.getCategories(resourceServer);
                     } else {
                         System.out.println(DENY_ACCESS);
                     }
@@ -49,7 +53,10 @@ public class Main {
                     return;
                 default:
                     if (option.startsWith("playlists") && Server.isAccess()) {
-                        Server.getPlaylists(option.split("\\s+")[1]);
+                        String[] command = option.split("\\s+");
+                        if (command.length == 2) {
+                            Server.getPlaylists(option.split("\\s+")[1], resourceServer);
+                        }
                     } else {
                         System.out.println(DENY_ACCESS);
                     }
