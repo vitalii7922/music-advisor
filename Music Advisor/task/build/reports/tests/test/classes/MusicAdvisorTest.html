@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">2.228s</div>
+<div class="counter">8.998s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">start</td>
-<td class="success">2.228s</td>
+<td class="success">8.998s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -89,6 +89,30 @@
 <span class="code">
 <pre>?[1;31m
 Start test 1?[0m
+&gt; new
+Please, provide access for application.
+&gt; exit
+---GOODBYE!---
+?[1;31m
+Start test 2?[0m
+&gt; featured
+Please, provide access for application.
+&gt; exit
+---GOODBYE!---
+?[1;31m
+Start test 3?[0m
+&gt; categories
+Please, provide access for application.
+&gt; exit
+---GOODBYE!---
+?[1;31m
+Start test 4?[0m
+&gt; playlists Party Time
+Please, provide access for application.
+&gt; exit
+---GOODBYE!---
+?[1;31m
+Start test 5?[0m
 &gt; auth
 use this link to request the access code:
 http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
@@ -99,26 +123,133 @@ Tester: done request 2: Not found authorization code. Try again.
 Tester: done request 3: Got the code. Return back to your program.
 code received
 making http request for access_token...
-response:
-{&quot;access_token&quot;:&quot;456456&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:3600,&quot;refresh_token&quot;:&quot;567567&quot;,&quot;scope&quot;:&quot;&quot;}
-&gt; featured
----FEATURED---
-Mellow Morning
-Wake Up and Smell the Coffee
-Monday Motivation
-Songs to Sing in the Shower
+Success!
 &gt; exit
 ---GOODBYE!---
 ?[1;31m
-Start test 2?[0m
+Start test 6?[0m
+&gt; auth
+use this link to request the access code:
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
+waiting for code...
+Tester: making requests to redirect uri: http://localhost:8080
+Tester: done request 1: Not found authorization code. Try again.
+Tester: done request 2: Not found authorization code. Try again.
+Tester: done request 3: Got the code. Return back to your program.
+code received
+making http request for access_token...
+Success!
 &gt; new
-Please, provide access for application.
+Runnin'
+[Pharrell Williams]
+https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+Sneakin'
+[Drake2, Drake3]
+https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
+
 &gt; exit
 ---GOODBYE!---
 ?[1;31m
-Start test 3?[0m
+Start test 7?[0m
+&gt; auth
+use this link to request the access code:
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
+waiting for code...
+Tester: making requests to redirect uri: http://localhost:8080
+Tester: done request 1: Not found authorization code. Try again.
+Tester: done request 2: Not found authorization code. Try again.
+Tester: done request 3: Got the code. Return back to your program.
+code received
+making http request for access_token...
+Success!
+&gt; categories
+Super Mood
+Top Lists
+Party Time
+&gt; exit
+---GOODBYE!---
+?[1;31m
+Start test 8?[0m
+&gt; auth
+use this link to request the access code:
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
+waiting for code...
+Tester: making requests to redirect uri: http://localhost:8080
+Tester: done request 1: Not found authorization code. Try again.
+Tester: done request 2: Not found authorization code. Try again.
+Tester: done request 3: Got the code. Return back to your program.
+code received
+making http request for access_token...
+Success!
 &gt; featured
-Please, provide access for application.
+Monday Morning Mood
+http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
+
+Upp och hoppa!
+http://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO
+
+&gt; exit
+---GOODBYE!---
+?[1;31m
+Start test 9?[0m
+&gt; auth
+use this link to request the access code:
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
+waiting for code...
+Tester: making requests to redirect uri: http://localhost:8080
+Tester: done request 1: Not found authorization code. Try again.
+Tester: done request 2: Not found authorization code. Try again.
+Tester: done request 3: Got the code. Return back to your program.
+code received
+making http request for access_token...
+Success!
+&gt; playlists Party Time
+Noite Eletronica
+http://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen
+
+Festa Indie
+http://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770
+
+&gt; exit
+---GOODBYE!---
+?[1;31m
+Start test 10?[0m
+&gt; auth
+use this link to request the access code:
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
+waiting for code...
+Tester: making requests to redirect uri: http://localhost:8080
+Tester: done request 1: Not found authorization code. Try again.
+Tester: done request 2: Not found authorization code. Try again.
+Tester: done request 3: Got the code. Return back to your program.
+code received
+making http request for access_token...
+Success!
+&gt; playlists Party Time
+Noite Eletronica
+http://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen
+
+Festa Indie
+http://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770
+
+&gt; exit
+---GOODBYE!---
+?[1;31m
+Start test 11?[0m
+&gt; auth
+use this link to request the access code:
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&amp;redirect_uri=http://localhost:8080&amp;response_type=code
+waiting for code...
+Tester: making requests to redirect uri: http://localhost:8080
+Tester: done request 1: Not found authorization code. Try again.
+Tester: done request 2: Not found authorization code. Try again.
+Tester: done request 3: Got the code. Return back to your program.
+code received
+making http request for access_token...
+Success!
+&gt; playlists Top Lists
+Test unpredictable error message
 &gt; exit
 ---GOODBYE!---
 </pre>
@@ -132,7 +263,7 @@ Please, provide access for application.
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.3.1</a> at Aug 5, 2020, 10:51:56 AM</p>
+<a href="http://www.gradle.org">Gradle 5.3.1</a> at 6 авг. 2020 г., 20:22:22</p>
 </div>
 </div>
 </body>

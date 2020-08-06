@@ -12,11 +12,12 @@ public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        if (args.length != 0 && args[0].contains("-access")) {
+        if (args.length != 0 && args[0].contains("-access") && args[2].contains("-resource")) {
             accessServer = args[1];
-        } else if (args.length != 0 && args[0].contains("-resource")){
+            resourceServer = args[3];
+        } /*else if (args.length != 0 && args[0].contains("-resource")){
             resourceServer = args[1];
-        } else {
+        }*/ else {
             accessServer = "https://accounts.spotify.com";
             resourceServer = "https://api.spotify.com";
         }
@@ -54,8 +55,9 @@ public class Main {
                 default:
                     if (option.startsWith("playlists") && Server.isAccess()) {
                         String[] command = option.split("\\s+");
-                        if (command.length == 2) {
-                            Server.getPlaylists(option.split("\\s+")[1], resourceServer);
+                        if (command.length > 1) {
+//                            System.out.println(option.substring(command[0].length() + 1));
+                            Server.getPlaylists(option.substring(command[0].length() + 1), resourceServer);
                         }
                     } else {
                         System.out.println(DENY_ACCESS);

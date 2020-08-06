@@ -124,22 +124,34 @@ public class Server {
     }
 
     public static void getCategories(String resourceServer) throws IOException, InterruptedException {
+//        JsonObject jo = JsonParser.parseString(sendGetRequest("categories", resourceServer)).getAsJsonObject();
+//        JsonObject categories = jo.getAsJsonObject("categories");
+        /*Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        System.out.println(gson.toJson(jo));*/
+//        for (JsonElement category : categories.getAsJsonArray("items")) {
+//            String categoryName = category.getAsJsonObject().get("name").getAsString();
+//            categoriesId.put(categoryName, category.getAsJsonObject().get("id").getAsString());
+//            System.out.println(categoryName);
+//        }
+//        categoriesId.entrySet().forEach(System.out::println);
+        saveCategories(resourceServer);
+        categoriesId.keySet().forEach(System.out::println);
+    }
+
+    public static void saveCategories(String resourceServer) throws IOException, InterruptedException {
         JsonObject jo = JsonParser.parseString(sendGetRequest("categories", resourceServer)).getAsJsonObject();
         JsonObject categories = jo.getAsJsonObject("categories");
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        System.out.println(gson.toJson(jo));
         for (JsonElement category : categories.getAsJsonArray("items")) {
             String categoryName = category.getAsJsonObject().get("name").getAsString();
             categoriesId.put(categoryName, category.getAsJsonObject().get("id").getAsString());
-            System.out.println(categoryName);
         }
-//        categoriesId.entrySet().forEach(System.out::println);
     }
 
-    public static void getPlaylists(String category, String resourceServer) throws IOException, InterruptedException {
+    public static void getPlaylists(String categoryName, String resourceServer) throws IOException, InterruptedException {
+        saveCategories(resourceServer);
         String categoryId;
-        if (categoriesId.containsKey(category)) {
-            categoryId = categoriesId.get(category);
+        if (categoriesId.containsKey(categoryName)) {
+            categoryId = categoriesId.get(categoryName);
         } else {
             System.out.println("Unknown category name.");
             return;
