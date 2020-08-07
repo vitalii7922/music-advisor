@@ -2,21 +2,22 @@ package advisor.Strategy;
 
 import java.util.List;
 
-public class TurningPagesCategories implements TurningMethods {
-    private int elementsNumber;
+public class TurningPagesCategories extends TurningMethods {
+/*    private int elementsNumber;
     private List<String> output;
     private int currentPage;
-    private int pagesNumber;
+    private int pagesNumber;*/
 
     public TurningPagesCategories(int elementsNumber, List<String> output) {
-        this.elementsNumber = elementsNumber;
-        this.output = output;
-        if (elementsNumber != 0) {
+        super(elementsNumber, output);
+//        this.elementsNumber = elementsNumber;
+//        this.output = output;
+        /*if (elementsNumber != 0) {
             pagesNumber = output.size() / elementsNumber;
-        }
+        }*/
     }
 
-    @Override
+    /*@Override
     public void turnPageForward() {
         if (output.size() > elementsNumber) {
             if ((currentPage + 1) * elementsNumber <= output.size()) {
@@ -48,5 +49,5 @@ public class TurningPagesCategories implements TurningMethods {
         } else {
             output.forEach(System.out::println);
         }
-    }
+    }*/
 }
