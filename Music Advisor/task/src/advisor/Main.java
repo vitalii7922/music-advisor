@@ -3,8 +3,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
-        String accessServer = null;
-        String resourceServer = null;
+        String accessServer;
+        String resourceServer;
         if (args.length != 0 && args[0].contains("-access") && args[2].contains("-resource")) {
             accessServer = args[1];
             resourceServer = args[3];

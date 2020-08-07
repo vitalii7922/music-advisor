@@ -1,6 +1,6 @@
 package advisor;
-import advisor.Strategy.PageTurner;
-import advisor.Strategy.TurningPagesCategories;
+import advisor.Strategy.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,7 +23,7 @@ public class View {
 
     public void render() throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
+        controller.setResourceServer(resourceServer);
         while (true) {
             String option = reader.readLine();
             switch (option) {
@@ -49,7 +49,9 @@ public class View {
                     pageTurner.turnPageBackward();
                     break;
                 default:
-                    takePlaylists(option);
+                    if (option.startsWith("playlists")) {
+                        takePlaylists(option);
+                    }
                     break;
             }
         }
@@ -57,7 +59,9 @@ public class View {
 
     private void takeNewReleases() throws IOException, InterruptedException {
         if (controller.isAccess()) {
-            controller.getNewReleases(resourceServer);
+            output = controller.getNewReleases();
+            pageTurner.setTurningMethods(new TurningPagesNew(elementsNumber, output));
+            pageTurner.turnPageForward();
         } else {
             System.out.println(DENY_ACCESS);
         }
@@ -65,7 +69,9 @@ public class View {
 
     private void takeFeatured() throws IOException, InterruptedException {
         if (controller.isAccess()) {
-            controller.getFeatured(resourceServer);
+            output = controller.getFeatured();
+            pageTurner.setTurningMethods(new TurningPagesFeatured(elementsNumber, output));
+            pageTurner.turnPageForward();
         } else {
             System.out.println(DENY_ACCESS);
         }
@@ -73,7 +79,7 @@ public class View {
 
     private void takeCategories() throws IOException, InterruptedException {
         if (controller.isAccess()) {
-            output = controller.getCategories(resourceServer);
+            output = controller.getCategories();
             pageTurner.setTurningMethods(new TurningPagesCategories(elementsNumber, output));
             pageTurner.turnPageForward();
         } else {
@@ -82,10 +88,12 @@ public class View {
     }
 
     private void takePlaylists(String option) throws IOException, InterruptedException {
-        if (option.startsWith("playlists") && controller.isAccess()) {
+        if (controller.isAccess()) {
             String[] command = option.split("\\s+");
             if (command.length > 1) {
-                controller.getPlaylists(option.substring(command[0].length() + 1), resourceServer);
+                output = controller.getPlaylists(option.substring(command[0].length() + 1));
+                pageTurner.setTurningMethods(new TurningPagesPlaylists(elementsNumber, output));
+                pageTurner.turnPageForward();
             }
         } else {
             System.out.println(DENY_ACCESS);
@@ -93,10 +101,10 @@ public class View {
     }
 
     private String doAuthentication(String accessServer) throws IOException {
-        String URL = accessServer + "/authorize?" +
+        String url = accessServer + "/authorize?" +
                 "client_id=c272e24c020d428f848594eea7f5199d&" +
                 "redirect_uri=http://localhost:8080&response_type=code";
-        System.out.printf("use this link to request the access code:%n%s%n", URL);
+        System.out.printf("use this link to request the access code:%n%s%n", url);
         System.out.println("waiting for code...");
         return Server.createAndStartServer();
     }

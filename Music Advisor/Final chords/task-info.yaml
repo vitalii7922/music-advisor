@@ -1071,6 +1071,15 @@ files:
 - name: src/advisor/Strategy/TurningPagesCategories.java
   visible: true
   learner_created: true
+- name: src/advisor/Strategy/TurningPagesFeatured.java
+  visible: true
+  learner_created: true
+- name: src/advisor/Strategy/TurningPagesNew.java
+  visible: true
+  learner_created: true
+- name: src/advisor/Strategy/TurningPagesPlaylists.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/62/stages/339/implement
 status: Unchecked
 record: -1

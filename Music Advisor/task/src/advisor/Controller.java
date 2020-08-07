@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Controller {
     static final String CLIENT_ID = "c272e24c020d428f848594eea7f5199d";
@@ -21,7 +19,8 @@ public class Controller {
     private boolean access = false;
     private final Map<String, String> categoriesId = new HashMap<>();
     private String accessToken;
-    private List<String> output;
+    private final List<String> output = new ArrayList<>();
+    private String resourceServer;
 
     void accessToken(String accessServer, String code) throws IOException, InterruptedException {
         System.out.println("code received");
@@ -42,49 +41,42 @@ public class Controller {
         System.out.println("Success!");
     }
 
-    void getNewReleases(String resourceServer) throws IOException, InterruptedException {
-        JsonObject jo = JsonParser.parseString(sendGetRequest("new-releases", resourceServer)).getAsJsonObject();
+    List<String> getNewReleases() throws IOException, InterruptedException {
+        JsonObject jo = JsonParser.parseString(sendGetRequest("new-releases")).getAsJsonObject();
         JsonObject albums = jo.getAsJsonObject("albums");
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonArray albumArray = albums.getAsJsonArray("items");
-//        System.out.println(gson.toJson(album));
-        List<JsonElement> result = IntStream.range(0, albumArray.size())
-                .mapToObj(albumArray::get)
-                .collect(Collectors.toList());
-//        result.stream().map(JsonElement::getAsJsonObject).collect(Collectors.toList()).forEach(System.out::println);
-//        result.forEach(System.out::println);
         List<String> musiciansNames = new ArrayList<>();
+        output.clear();
         for (JsonElement album : albumArray.getAsJsonArray()) {
-            System.out.println(album.getAsJsonObject().get("name").getAsString());
             for (JsonElement artist : album.getAsJsonObject().getAsJsonArray("artists")) {
-//                System.out.println("[" + x.getAsJsonObject().get("name").getAsString() + "]");
                 musiciansNames.add(artist.getAsJsonObject().get("name").getAsString());
             }
-            System.out.println(musiciansNames);
+            output.add(album.getAsJsonObject().get("name").getAsString() + "\n" + musiciansNames.toString() + "\n" +
+                    album.getAsJsonObject().get("external_urls").getAsJsonObject().get("spotify").getAsString() + "\n");
             musiciansNames.clear();
-            System.out.println(album.getAsJsonObject().get("external_urls")
-                    .getAsJsonObject().get("spotify").getAsString());
-            System.out.println();
         }
+        return output;
     }
 
-    void getFeatured(String resourceServer) throws IOException, InterruptedException {
-        JsonObject jo = JsonParser.parseString(sendGetRequest("featured-playlists", resourceServer)).getAsJsonObject();
+    List<String> getFeatured() throws IOException, InterruptedException {
+        JsonObject jo = JsonParser.parseString(sendGetRequest("featured-playlists")).getAsJsonObject();
         JsonObject playlists = jo.getAsJsonObject("playlists");
+        output.clear();
         for (JsonElement playlist : playlists.getAsJsonArray("items")) {
-            System.out.println(playlist.getAsJsonObject().get("name").getAsString());
-            System.out.println(playlist.getAsJsonObject().get("external_urls").getAsJsonObject().get("spotify").getAsString());
-            System.out.println();
+            output.add(playlist.getAsJsonObject().get("name").getAsString() + "\n" +
+                    playlist.getAsJsonObject().get("external_urls").getAsJsonObject().get("spotify").getAsString() + "\n");
         }
+        return output;
     }
 
-    List<String> getCategories(String resourceServer) throws IOException, InterruptedException {
-        saveCategories(resourceServer);
+    List<String> getCategories() throws IOException, InterruptedException {
+        saveCategories();
         return new ArrayList<>(categoriesId.keySet());
     }
 
-    void saveCategories(String resourceServer) throws IOException, InterruptedException {
-        JsonObject jo = JsonParser.parseString(sendGetRequest("categories", resourceServer)).getAsJsonObject();
+    void saveCategories() throws IOException, InterruptedException {
+        categoriesId.clear();
+        JsonObject jo = JsonParser.parseString(sendGetRequest("categories")).getAsJsonObject();
         JsonObject categories = jo.getAsJsonObject("categories");
         for (JsonElement category : categories.getAsJsonArray("items")) {
             String categoryName = category.getAsJsonObject().get("name").getAsString();
@@ -92,34 +84,35 @@ public class Controller {
         }
     }
 
-    void getPlaylists(String categoryName, String resourceServer) throws IOException, InterruptedException {
-        saveCategories(resourceServer);
+    List<String> getPlaylists(String categoryName) throws IOException, InterruptedException {
+        saveCategories();
         String categoryId;
+        output.clear();
         if (categoriesId.containsKey(categoryName)) {
             categoryId = categoriesId.get(categoryName);
         } else {
             System.out.println("Unknown category name.");
-            return;
+            return output;
         }
         JsonObject jo = JsonParser
-                .parseString(sendGetRequest("categories/" + categoryId + "/playlists", resourceServer))
+                .parseString(sendGetRequest("categories/" + categoryId + "/playlists"))
                 .getAsJsonObject();
         JsonObject playlists = jo.getAsJsonObject("playlists");
         if (playlists != null) {
             for (JsonElement x : playlists.getAsJsonArray("items")) {
-                System.out.println(x.getAsJsonObject().get("name").getAsString());
-                System.out.println(x.getAsJsonObject().get("external_urls").getAsJsonObject().get("spotify").getAsString());
-                System.out.println();
+                output.add(x.getAsJsonObject().get("name").getAsString() + "\n" +
+                        x.getAsJsonObject().get("external_urls").getAsJsonObject().get("spotify").getAsString() + "\n");
             }
         } else {
             System.out.println(jo.getAsJsonObject("error").get("message").getAsString());
         }
+        return output;
     }
 
-    String sendGetRequest(String endpoint, String resource) throws IOException, InterruptedException {
+    String sendGetRequest(String endpoint) throws IOException, InterruptedException {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .header("Authorization", "Bearer " + getAccessToken())
-                .uri(URI.create(resource + "/v1/browse/" + endpoint))
+                .uri(URI.create(resourceServer + "/v1/browse/" + endpoint))
                 .GET()
                 .build();
         return client.send(httpRequest, HttpResponse.BodyHandlers.ofString()).body();
@@ -139,5 +132,13 @@ public class Controller {
 
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
+    }
+
+    public String getResourceServer() {
+        return resourceServer;
+    }
+
+    public void setResourceServer(String resourceServer) {
+        this.resourceServer = resourceServer;
     }
 }
