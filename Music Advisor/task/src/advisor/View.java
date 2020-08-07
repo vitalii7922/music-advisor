@@ -1,26 +1,40 @@
 package advisor;
-
+import advisor.Strategy.PageTurner;
+import advisor.Strategy.TurningPagesCategories;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 public class View {
     private final Controller controller = new Controller();
     private static final String DENY_ACCESS = "Please, provide access for application.";
+    private String accessServer;
+    private String resourceServer;
+    private List<String> output;
+    private int elementsNumber;
+    private final PageTurner pageTurner = new PageTurner();
 
-    public void render(String accessServer, String resourceServer) throws IOException, InterruptedException {
+    public View(String accessServer, String resourceServer, int elementsNumber) {
+        this.accessServer = accessServer;
+        this.resourceServer = resourceServer;
+        this.elementsNumber = elementsNumber;
+    }
+
+    public void render() throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         while (true) {
             String option = reader.readLine();
             switch (option) {
                 case "new":
-                    takeNewReleases(resourceServer);
+                    takeNewReleases();
                     break;
                 case "featured":
-                    takeFeatured(resourceServer);
+                    takeFeatured();
                     break;
                 case "categories":
-                    takeCategories(resourceServer);
+                    takeCategories();
                     break;
                 case "auth":
                     controller.accessToken(accessServer, doAuthentication(accessServer));
@@ -28,14 +42,20 @@ public class View {
                 case "exit":
                     System.out.println("---GOODBYE!---");
                     return;
+                case "next":
+                    pageTurner.turnPageForward();
+                    break;
+                case "prev":
+                    pageTurner.turnPageBackward();
+                    break;
                 default:
-                    takePlaylists(resourceServer, option);
+                    takePlaylists(option);
                     break;
             }
         }
     }
 
-    private void takeNewReleases(String resourceServer) throws IOException, InterruptedException {
+    private void takeNewReleases() throws IOException, InterruptedException {
         if (controller.isAccess()) {
             controller.getNewReleases(resourceServer);
         } else {
@@ -43,7 +63,7 @@ public class View {
         }
     }
 
-    private void takeFeatured(String resourceServer) throws IOException, InterruptedException {
+    private void takeFeatured() throws IOException, InterruptedException {
         if (controller.isAccess()) {
             controller.getFeatured(resourceServer);
         } else {
@@ -51,15 +71,17 @@ public class View {
         }
     }
 
-    private void takeCategories(String resourceServer) throws IOException, InterruptedException {
+    private void takeCategories() throws IOException, InterruptedException {
         if (controller.isAccess()) {
-            controller.getFeatured(resourceServer);
+            output = controller.getCategories(resourceServer);
+            pageTurner.setTurningMethods(new TurningPagesCategories(elementsNumber, output));
+            pageTurner.turnPageForward();
         } else {
             System.out.println(DENY_ACCESS);
         }
     }
 
-    private void takePlaylists(String resourceServer, String option) throws IOException, InterruptedException {
+    private void takePlaylists(String option) throws IOException, InterruptedException {
         if (option.startsWith("playlists") && controller.isAccess()) {
             String[] command = option.split("\\s+");
             if (command.length > 1) {
@@ -76,6 +98,6 @@ public class View {
                 "redirect_uri=http://localhost:8080&response_type=code";
         System.out.printf("use this link to request the access code:%n%s%n", URL);
         System.out.println("waiting for code...");
-        return Server.createAndStartServer(controller, accessServer);
+        return Server.createAndStartServer();
     }
 }

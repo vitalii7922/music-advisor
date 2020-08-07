@@ -21,6 +21,7 @@ public class Controller {
     private boolean access = false;
     private final Map<String, String> categoriesId = new HashMap<>();
     private String accessToken;
+    private List<String> output;
 
     void accessToken(String accessServer, String code) throws IOException, InterruptedException {
         System.out.println("code received");
@@ -77,9 +78,9 @@ public class Controller {
         }
     }
 
-    void getCategories(String resourceServer) throws IOException, InterruptedException {
+    List<String> getCategories(String resourceServer) throws IOException, InterruptedException {
         saveCategories(resourceServer);
-        categoriesId.keySet().forEach(System.out::println);
+        return new ArrayList<>(categoriesId.keySet());
     }
 
     void saveCategories(String resourceServer) throws IOException, InterruptedException {

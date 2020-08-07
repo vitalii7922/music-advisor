@@ -12,7 +12,7 @@ public class Server {
     private Server() {
     }
 
-    static String createAndStartServer(Controller controller, String accessServer) throws IOException {
+    static String createAndStartServer() throws IOException {
         if (server == null) {
             HttpServer httpServer = null;
             httpServer = HttpServer.create();

@@ -1056,6 +1056,21 @@ files:
 - name: src/advisor/View.java
   visible: true
   learner_created: true
+- name: src/advisor/Pagination.java
+  visible: true
+  learner_created: true
+- name: src/advisor/PageTurning.java
+  visible: true
+  learner_created: true
+- name: src/advisor/Strategy/TurningMethods.java
+  visible: true
+  learner_created: true
+- name: src/advisor/Strategy/PageTurner.java
+  visible: true
+  learner_created: true
+- name: src/advisor/Strategy/TurningPagesCategories.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/62/stages/339/implement
 status: Unchecked
 record: -1
