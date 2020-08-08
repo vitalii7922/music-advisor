@@ -1,4 +1,4 @@
-package advisor;
+package advisor.view;
 import advisor.controller.Controller;
 import advisor.server.Server;
 import advisor.pagination.*;

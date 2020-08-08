@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-08T11:28:39" hostname="DESKTOP-RLTM6OB" time="6.575">
+<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-08T12:31:57" hostname="DESKTOP-RLTM6OB" time="6.868">
   <properties/>
-  <testcase name="start" classname="MusicAdvisorTest" time="6.575"/>
+  <testcase name="start" classname="MusicAdvisorTest" time="6.868"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 > auth

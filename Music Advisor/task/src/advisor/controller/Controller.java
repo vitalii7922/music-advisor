@@ -55,7 +55,7 @@ public class Controller {
         return output;
     }
 
-    List<String> getFeatured() throws IOException, InterruptedException {
+    public List<String> getFeatured() throws IOException, InterruptedException {
         JsonObject jo = JsonParser.parseString(sendGetRequest("featured-playlists")).getAsJsonObject();
         JsonObject playlists = jo.getAsJsonObject("playlists");
         output.clear();
