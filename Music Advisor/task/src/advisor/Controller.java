@@ -7,17 +7,14 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Controller {
     static final String CLIENT_ID = "c272e24c020d428f848594eea7f5199d";
     static final String CLIENT_SECRET = "583af1b361fb47598bd14c9f1fdf386c";
     private final HttpClient client = HttpClient.newBuilder().build();
     private boolean access = false;
-    private final Map<String, String> categoriesId = new HashMap<>();
+    private final Map<String, String> categoriesId = new LinkedHashMap<>();
     private String accessToken;
     private final List<String> output = new ArrayList<>();
     private String resourceServer;

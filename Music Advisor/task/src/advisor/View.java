@@ -1,9 +1,10 @@
 package advisor;
-import advisor.Strategy.*;
+import advisor.strategy.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class View {
@@ -48,6 +49,9 @@ public class View {
                 case "prev":
                     pageTurner.turnPageBackward();
                     break;
+                case "test":
+                    test();
+                    break;
                 default:
                     if (option.startsWith("playlists")) {
                         takePlaylists(option);
@@ -55,6 +59,15 @@ public class View {
                     break;
             }
         }
+    }
+
+    private void test() {
+        List<String> hello = new ArrayList<>();
+        hello.add("hello1\n");
+        hello.add("hello2\n");
+        output = hello;
+        pageTurner.setTurningMethods(new TurningPagesCategories(elementsNumber, output));
+        pageTurner.turnPageForward();
     }
 
     private void takeNewReleases() throws IOException, InterruptedException {

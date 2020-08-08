@@ -1,0 +1,12 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(öÈÝÇúÿÿÿÿ
+N	java:S106^"9Replace this use of System.out or System.err by a logger.(›Ÿ«À
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¯ÅÕŒ
+N	java:S106)"9Replace this use of System.out or System.err by a logger.(ŽžÏû
+c
+java:S11927"HDefine a constant instead of duplicating this literal "spotify" 3 times.(³²®ëÿÿÿÿÿ
+a
+java:S1192/"FDefine a constant instead of duplicating this literal "items" 4 times.(ãóÁ‰ýÿÿÿÿ
+N	java:S106k"9Replace this use of System.out or System.err by a logger.(à×ýý
+i
+java:S11927"NDefine a constant instead of duplicating this literal "external_urls" 3 times.(³²®ëÿÿÿÿÿ

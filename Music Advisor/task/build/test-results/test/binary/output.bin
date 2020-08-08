@@ -1,25 +1,115 @@
 [1;31m
 Start test 1[0m
-> new
-)Please, provide access for application.
+> auth
++use this link to request the access code:
+ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+waiting for code...
+@Tester: making requests to redirect uri: http://localhost:8080
+BTester: done request 1: Not found authorization code. Try again.
+BTester: done request 2: Not found authorization code. Try again.
+DTester: done request 3: Got the code. Return back to your program.
+code received
+)making http request for access_token...
+
+Success!
 > exit
 ---GOODBYE!---
 [1;31m
 Start test 2[0m
-> featured
-)Please, provide access for application.
+> auth
++use this link to request the access code:
+ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+waiting for code...
+@Tester: making requests to redirect uri: http://localhost:8080
+BTester: done request 1: Not found authorization code. Try again.
+BTester: done request 2: Not found authorization code. Try again.
+DTester: done request 3: Got the code. Return back to your program.
+code received
+)making http request for access_token...
+
+Success!
+> new
+Runnin'
+[Pharrell Williams]
+6https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
+> prev
+No more pages.
+> next
+	Sneakin'
+	[Drake2]
+6https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
+
+---PAGE 2 OF 2---
+> next
+No more pages
+> prev
+Runnin'
+[Pharrell Williams]
+6https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
 > exit
 ---GOODBYE!---
 [1;31m
 Start test 3[0m
+> auth
++use this link to request the access code:
+ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+waiting for code...
+@Tester: making requests to redirect uri: http://localhost:8080
+BTester: done request 1: Not found authorization code. Try again.
+BTester: done request 2: Not found authorization code. Try again.
+DTester: done request 3: Got the code. Return back to your program.
+code received
+)making http request for access_token...
+
+Success!
 > categories
-)Please, provide access for application.
-> exit
----GOODBYE!---
+Top Lists
+---PAGE 1 OF 3---
+> next
+Super Mood
+---PAGE 2 OF 3---
+> next
+Party Time
+---PAGE 3 OF 3---
+> prev
+Super Mood
+---PAGE 2 OF 3---
+> prev
+Top Lists
+---PAGE 1 OF 3---
 [1;31m
 Start test 4[0m
-> playlists Party Time
-)Please, provide access for application.
+> auth
++use this link to request the access code:
+ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+waiting for code...
+@Tester: making requests to redirect uri: http://localhost:8080
+BTester: done request 1: Not found authorization code. Try again.
+BTester: done request 2: Not found authorization code. Try again.
+DTester: done request 3: Got the code. Return back to your program.
+code received
+)making http request for access_token...
+
+Success!
+> featured
+Monday Morning Mood
+Ehttp://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
+
+---PAGE 1 OF 2---
+> next
+Upp och hoppa!
+Nhttp://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO
+
+---PAGE 2 OF 2---
+> prev
+Monday Morning Mood
+Ehttp://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
+
+---PAGE 1 OF 2---
 > exit
 ---GOODBYE!---
 [1;31m
@@ -36,138 +126,20 @@
 )making http request for access_token...
 
 Success!
-> exit
----GOODBYE!---
-[1;31m
-Start test 6[0m
-> auth
-+use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-@Tester: making requests to redirect uri: http://localhost:8080
-BTester: done request 1: Not found authorization code. Try again.
-BTester: done request 2: Not found authorization code. Try again.
-DTester: done request 3: Got the code. Return back to your program.
-code received
-)making http request for access_token...
-
-Success!
-> new
-	Runnin'
-[Pharrell Williams]
-7https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
-
-
-Sneakin'
-[Drake2, Drake3]
-7https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
-
-> exit
----GOODBYE!---
-[1;31m
-Start test 7[0m
-> auth
-+use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-@Tester: making requests to redirect uri: http://localhost:8080
-BTester: done request 1: Not found authorization code. Try again.
-BTester: done request 2: Not found authorization code. Try again.
-DTester: done request 3: Got the code. Return back to your program.
-code received
-)making http request for access_token...
-
-Success!
-> categories
-Super Mood
-Top Lists
-Party Time
-> exit
----GOODBYE!---
-[1;31m
-Start test 8[0m
-> auth
-+use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-@Tester: making requests to redirect uri: http://localhost:8080
-BTester: done request 1: Not found authorization code. Try again.
-BTester: done request 2: Not found authorization code. Try again.
-DTester: done request 3: Got the code. Return back to your program.
-code received
-)making http request for access_token...
-
-Success!
-> featured
-Monday Morning Mood
-Fhttp://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
-
-Upp och hoppa!
-Ohttp://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO
-
-> exit
----GOODBYE!---
-[1;31m
-Start test 9[0m
-> auth
-+use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-@Tester: making requests to redirect uri: http://localhost:8080
-BTester: done request 1: Not found authorization code. Try again.
-BTester: done request 2: Not found authorization code. Try again.
-DTester: done request 3: Got the code. Return back to your program.
-code received
-)making http request for access_token...
-
-Success!
 > playlists Party Time
-Noite Eletronica
-Ohttp://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen
+Noite Eletronica
+Nhttp://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen
 
-Festa Indie
-Ohttp://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770
+---PAGE 1 OF 2---
+> next
+Festa Indie
+Nhttp://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770
 
-> exit
----GOODBYE!---
-[1;31m
-Start test 10[0m
-> auth
-+use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-@Tester: making requests to redirect uri: http://localhost:8080
-BTester: done request 1: Not found authorization code. Try again.
-BTester: done request 2: Not found authorization code. Try again.
-DTester: done request 3: Got the code. Return back to your program.
-code received
-)making http request for access_token...
-
-Success!
-> playlists Party Time
-Noite Eletronica
-Ohttp://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen
+---PAGE 2 OF 2---
+> prev
+Noite Eletronica
+Nhttp://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen
 
-Festa Indie
-Ohttp://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770
-
-> exit
----GOODBYE!---
-[1;31m
-Start test 11[0m
-> auth
-+use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-@Tester: making requests to redirect uri: http://localhost:8080
-BTester: done request 1: Not found authorization code. Try again.
-BTester: done request 2: Not found authorization code. Try again.
-DTester: done request 3: Got the code. Return back to your program.
-code received
-)making http request for access_token...
-
-Success!
-> playlists Top Lists
-"Test unpredictable error message
+---PAGE 1 OF 2---
 > exit
 ---GOODBYE!---

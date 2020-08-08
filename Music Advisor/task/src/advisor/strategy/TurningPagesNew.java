@@ -1,4 +1,4 @@
-package advisor.Strategy;
+package advisor.strategy;
 
 import java.util.List;
 

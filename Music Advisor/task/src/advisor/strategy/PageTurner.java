@@ -1,6 +1,4 @@
-package advisor.Strategy;
-
-import java.util.List;
+package advisor.strategy;
 
 public class PageTurner {
     TurningMethods turningMethods;

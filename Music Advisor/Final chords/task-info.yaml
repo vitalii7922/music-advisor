@@ -1056,30 +1056,28 @@ files:
 - name: src/advisor/View.java
   visible: true
   learner_created: true
-- name: src/advisor/Pagination.java
+- name: src/advisor/strategy/TurningMethods.java
   visible: true
   learner_created: true
-- name: src/advisor/PageTurning.java
+- name: src/advisor/strategy/PageTurner.java
   visible: true
   learner_created: true
-- name: src/advisor/Strategy/TurningMethods.java
+- name: src/advisor/strategy/TurningPagesCategories.java
   visible: true
   learner_created: true
-- name: src/advisor/Strategy/PageTurner.java
+- name: src/advisor/strategy/TurningPagesFeatured.java
   visible: true
   learner_created: true
-- name: src/advisor/Strategy/TurningPagesCategories.java
+- name: src/advisor/strategy/TurningPagesNew.java
   visible: true
   learner_created: true
-- name: src/advisor/Strategy/TurningPagesFeatured.java
-  visible: true
-  learner_created: true
-- name: src/advisor/Strategy/TurningPagesNew.java
-  visible: true
-  learner_created: true
-- name: src/advisor/Strategy/TurningPagesPlaylists.java
+- name: src/advisor/strategy/TurningPagesPlaylists.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/62/stages/339/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/62/stages/339/implement">JetBrains
+    Academy</a>
+  time: Sat, 08 Aug 2020 11:28:47 UTC
 record: -1
