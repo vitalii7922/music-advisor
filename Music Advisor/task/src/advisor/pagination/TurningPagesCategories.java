@@ -1,4 +1,4 @@
-package advisor.strategy;
+package advisor.pagination;
 
 import java.util.List;
 

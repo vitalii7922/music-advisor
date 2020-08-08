@@ -1,4 +1,4 @@
-package advisor;
+package advisor.controller;
 
 import com.google.gson.*;
 
@@ -19,7 +19,7 @@ public class Controller {
     private final List<String> output = new ArrayList<>();
     private String resourceServer;
 
-    void accessToken(String accessServer, String code) throws IOException, InterruptedException {
+    public void accessToken(String accessServer, String code) throws IOException, InterruptedException {
         System.out.println("code received");
         System.out.println("making http request for access_token...");
         HttpRequest request = HttpRequest.newBuilder()
@@ -38,7 +38,7 @@ public class Controller {
         System.out.println("Success!");
     }
 
-    List<String> getNewReleases() throws IOException, InterruptedException {
+    public List<String> getNewReleases() throws IOException, InterruptedException {
         JsonObject jo = JsonParser.parseString(sendGetRequest("new-releases")).getAsJsonObject();
         JsonObject albums = jo.getAsJsonObject("albums");
         JsonArray albumArray = albums.getAsJsonArray("items");
@@ -66,7 +66,7 @@ public class Controller {
         return output;
     }
 
-    List<String> getCategories() throws IOException, InterruptedException {
+    public List<String> getCategories() throws IOException, InterruptedException {
         saveCategories();
         return new ArrayList<>(categoriesId.keySet());
     }
@@ -81,7 +81,7 @@ public class Controller {
         }
     }
 
-    List<String> getPlaylists(String categoryName) throws IOException, InterruptedException {
+    public List<String> getPlaylists(String categoryName) throws IOException, InterruptedException {
         saveCategories();
         String categoryId;
         output.clear();

@@ -848,7 +848,10 @@ files:
         }
     }
   learner_created: false
-- name: src/advisor/Server.java
+- name: src/advisor/controller/Controller.java
+  visible: true
+  learner_created: true
+- name: src/advisor/server/Server.java
   visible: true
   text: |
     package advisor;
@@ -1050,28 +1053,25 @@ files:
         }
     }
   learner_created: true
-- name: src/advisor/Controller.java
+- name: src/advisor/view.java
   visible: true
   learner_created: true
-- name: src/advisor/View.java
+- name: src/advisor/pagination/TurningMethods.java
   visible: true
   learner_created: true
-- name: src/advisor/strategy/TurningMethods.java
+- name: src/advisor/pagination/PageTurner.java
   visible: true
   learner_created: true
-- name: src/advisor/strategy/PageTurner.java
+- name: src/advisor/pagination/TurningPagesCategories.java
   visible: true
   learner_created: true
-- name: src/advisor/strategy/TurningPagesCategories.java
+- name: src/advisor/pagination/TurningPagesFeatured.java
   visible: true
   learner_created: true
-- name: src/advisor/strategy/TurningPagesFeatured.java
+- name: src/advisor/pagination/TurningPagesNew.java
   visible: true
   learner_created: true
-- name: src/advisor/strategy/TurningPagesNew.java
-  visible: true
-  learner_created: true
-- name: src/advisor/strategy/TurningPagesPlaylists.java
+- name: src/advisor/pagination/TurningPagesPlaylists.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/62/stages/339/implement

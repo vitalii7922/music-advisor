@@ -1,4 +1,4 @@
-package advisor;
+package advisor.server;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
@@ -12,7 +12,7 @@ public class Server {
     private Server() {
     }
 
-    static String createAndStartServer() throws IOException {
+    public static String createAndStartServer() throws IOException {
         if (server == null) {
             HttpServer httpServer = null;
             httpServer = HttpServer.create();
