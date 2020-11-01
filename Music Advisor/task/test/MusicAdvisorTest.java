@@ -7,8 +7,6 @@ import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testing.TestedProgram;
 import org.junit.AfterClass;
 
-import java.awt.desktop.QuitStrategy;
-
 public class MusicAdvisorTest extends StageTest<String> {
 
     private static final String fictiveAuthCode = "123123";

@@ -8,7 +8,7 @@ abstract class TurningMethods {
     private int currentPage;
     private int pagesNumber;
 
-    public TurningMethods(int elementsNumber, List<String> output) {
+    TurningMethods(int elementsNumber, List<String> output) {
         this.elementsNumber = elementsNumber;
         this.output = output;
         if (elementsNumber != 0) {
@@ -16,7 +16,7 @@ abstract class TurningMethods {
         }
     }
 
-    public void turnPageForward() {
+    void turnPageForward() {
         int lastElement;
         if (output.size() > elementsNumber) {
             if ((currentPage + 1) <= pagesNumber) {
@@ -33,7 +33,7 @@ abstract class TurningMethods {
         }
     }
 
-    public void turnPageBackward() {
+    void turnPageBackward() {
         if (output.size() > elementsNumber) {
             if (currentPage > 1) {
                 currentPage--;

@@ -17,7 +17,7 @@ stages:
 topics:
   0:
   - title: IDE
-    theory_id: 3805
+    theory_id: 10996
   - title: Introduction to Java
     theory_id: 3500
   - title: Basic literals
@@ -71,6 +71,8 @@ topics:
     theory_id: 6865
   - title: Introduction to OOP
     theory_id: 3614
+  - title: Functional decomposition
+    theory_id: 10570
   - title: Introduction to operating systems
     theory_id: 9704
   - title: Command line overview
@@ -85,6 +87,8 @@ topics:
     theory_id: 3504
   - title: Defining methods
     theory_id: 3590
+  - title: The main method
+    theory_id: 3489
   - title: Write, compile, and run
     theory_id: 3739
   - title: JVM, JRE, and JDK

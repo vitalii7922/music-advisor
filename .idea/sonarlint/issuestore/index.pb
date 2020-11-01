@@ -1,7 +1,5 @@
 
 X
-(Music Advisor/task/src/advisor/View.java,3\4\3426b4e8cfedcab02036752e28680233a0299051
-X
 (Music Advisor/task/src/advisor/Main.java,e\b\ebdf247b7c9d88934fc5d623ba0b81649d2a8e71
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0

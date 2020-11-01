@@ -28,44 +28,6 @@ Success!
 )making http request for access_token...
 
 Success!
-> new
-Runnin'
-[Pharrell Williams]
-6https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
-
----PAGE 1 OF 2---
-> prev
-No more pages.
-> next
-	Sneakin'
-	[Drake2]
-6https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
-
----PAGE 2 OF 2---
-> next
-No more pages
-> prev
-Runnin'
-[Pharrell Williams]
-6https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
-
----PAGE 1 OF 2---
-> exit
----GOODBYE!---
-[1;31m
-Start test 3[0m
-> auth
-+use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-@Tester: making requests to redirect uri: http://localhost:8080
-BTester: done request 1: Not found authorization code. Try again.
-BTester: done request 2: Not found authorization code. Try again.
-DTester: done request 3: Got the code. Return back to your program.
-code received
-)making http request for access_token...
-
-Success!
 > categories
 Top Lists
 ---PAGE 1 OF 3---
@@ -82,7 +44,7 @@ Success!
 Top Lists
 ---PAGE 1 OF 3---
 [1;31m
-Start test 4[0m
+Start test 3[0m
 > auth
 +use this link to request the access code:
 ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
@@ -108,6 +70,44 @@ Success!
 > prev
 Monday Morning Mood
 Ehttp://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
+
+---PAGE 1 OF 2---
+> exit
+---GOODBYE!---
+[1;31m
+Start test 4[0m
+> auth
++use this link to request the access code:
+ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+waiting for code...
+@Tester: making requests to redirect uri: http://localhost:8080
+BTester: done request 1: Not found authorization code. Try again.
+BTester: done request 2: Not found authorization code. Try again.
+DTester: done request 3: Got the code. Return back to your program.
+code received
+)making http request for access_token...
+
+Success!
+> new
+Runnin'
+[Pharrell Williams]
+6https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
+> prev
+No more pages.
+> next
+	Sneakin'
+	[Drake2]
+6https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
+
+---PAGE 2 OF 2---
+> next
+No more pages
+> prev
+Runnin'
+[Pharrell Williams]
+6https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
 
 ---PAGE 1 OF 2---
 > exit

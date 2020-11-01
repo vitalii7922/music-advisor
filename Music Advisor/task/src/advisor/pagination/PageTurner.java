@@ -1,7 +1,7 @@
 package advisor.pagination;
 
 public class PageTurner {
-    TurningMethods turningMethods;
+    private TurningMethods turningMethods;
 
     public void setTurningMethods(TurningMethods turningMethods) {
         this.turningMethods = turningMethods;

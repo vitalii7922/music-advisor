@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-08T12:31:57" hostname="DESKTOP-RLTM6OB" time="6.868">
+<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-01T19:19:05" hostname="DESKTOP-H0T0QGB" time="6.605">
   <properties/>
-  <testcase name="start" classname="MusicAdvisorTest" time="6.868"/>
+  <testcase name="start" classname="MusicAdvisorTest" time="6.605"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 > auth
@@ -19,6 +19,64 @@ Success!
 ---GOODBYE!---
 ?[1;31m
 Start test 2?[0m
+> auth
+use this link to request the access code:
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+waiting for code...
+Tester: making requests to redirect uri: http://localhost:8080
+Tester: done request 1: Not found authorization code. Try again.
+Tester: done request 2: Not found authorization code. Try again.
+Tester: done request 3: Got the code. Return back to your program.
+code received
+making http request for access_token...
+Success!
+> categories
+Top Lists
+---PAGE 1 OF 3---
+> next
+Super Mood
+---PAGE 2 OF 3---
+> next
+Party Time
+---PAGE 3 OF 3---
+> prev
+Super Mood
+---PAGE 2 OF 3---
+> prev
+Top Lists
+---PAGE 1 OF 3---
+?[1;31m
+Start test 3?[0m
+> auth
+use this link to request the access code:
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+waiting for code...
+Tester: making requests to redirect uri: http://localhost:8080
+Tester: done request 1: Not found authorization code. Try again.
+Tester: done request 2: Not found authorization code. Try again.
+Tester: done request 3: Got the code. Return back to your program.
+code received
+making http request for access_token...
+Success!
+> featured
+Monday Morning Mood
+http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
+
+---PAGE 1 OF 2---
+> next
+Upp och hoppa!
+http://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO
+
+---PAGE 2 OF 2---
+> prev
+Monday Morning Mood
+http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
+
+---PAGE 1 OF 2---
+> exit
+---GOODBYE!---
+?[1;31m
+Start test 4?[0m
 > auth
 use this link to request the access code:
 http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
@@ -50,64 +108,6 @@ No more pages
 Runnin'
 [Pharrell Williams]
 https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
-
----PAGE 1 OF 2---
-> exit
----GOODBYE!---
-?[1;31m
-Start test 3?[0m
-> auth
-use this link to request the access code:
-http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-Tester: making requests to redirect uri: http://localhost:8080
-Tester: done request 1: Not found authorization code. Try again.
-Tester: done request 2: Not found authorization code. Try again.
-Tester: done request 3: Got the code. Return back to your program.
-code received
-making http request for access_token...
-Success!
-> categories
-Top Lists
----PAGE 1 OF 3---
-> next
-Super Mood
----PAGE 2 OF 3---
-> next
-Party Time
----PAGE 3 OF 3---
-> prev
-Super Mood
----PAGE 2 OF 3---
-> prev
-Top Lists
----PAGE 1 OF 3---
-?[1;31m
-Start test 4?[0m
-> auth
-use this link to request the access code:
-http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
-waiting for code...
-Tester: making requests to redirect uri: http://localhost:8080
-Tester: done request 1: Not found authorization code. Try again.
-Tester: done request 2: Not found authorization code. Try again.
-Tester: done request 3: Got the code. Return back to your program.
-code received
-making http request for access_token...
-Success!
-> featured
-Monday Morning Mood
-http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
-
----PAGE 1 OF 2---
-> next
-Upp och hoppa!
-http://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO
-
----PAGE 2 OF 2---
-> prev
-Monday Morning Mood
-http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
 
 ---PAGE 1 OF 2---
 > exit

@@ -1,7 +1,8 @@
 package advisor.view;
+
 import advisor.controller.Controller;
-import advisor.server.Server;
 import advisor.pagination.*;
+import advisor.server.Server;
 
 import java.io.BufferedReader;
 import java.io.IOException;

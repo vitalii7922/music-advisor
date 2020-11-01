@@ -41,13 +41,13 @@ for (JsonElement hobby : jo.getAsJsonArray("hobbies")) {
 <h3>REST principles</h3>
 
 <p>Since the Spotify API is based on simple REST principles, we must learn what REST means. Representational State Transfer (REST) is a software architectural style that defines a set of constraints to be used for creating web services.<br>
-It works over HTTP. The main concept of REST is resource: every URL defines its own resource and every HTTP method defines a verb you want to do with this resource.</p>
+    It works over HTTP. The main concept of REST is resource: every URL defines its own resource and every HTTP method defines a verb you want to do with this resource.</p>
 
 <p>Examples<br>
-/albums with the GET method should return representational state of all albums;<br>
-/albums with the POST method should create new resource over /albums URL;<br>
-/albums/5 with the PUT method should update information about the fifth album;<br>
-/albums/5 with the DELETE method should delete album number 5.</p>
+    /albums with the GET method should return representational state of all albums;<br>
+    /albums with the POST method should create new resource over /albums URL;<br>
+    /albums/5 with the PUT method should update information about the fifth album;<br>
+    /albums/5 with the DELETE method should delete album number 5.</p>
 
 <h3>Adding authorization header</h3>
 
@@ -69,29 +69,29 @@ It works over HTTP. The main concept of REST is resource: every URL defines its 
 <p>Let's remember what information should be provided for each user request:</p>
 
 <ul>
-	<li><code class="language-java">featured</code> — list of Spotify featured playlists with their links fetched from API;</li>
-	<li><code class="language-java">new</code> — list of new albums with artists and links on Spotify;</li>
-	<li><code class="language-java">categories</code> — list of all available categories on Spotify (just their names);</li>
-	<li><code class="language-java">playlists C_NAME</code>, where C_NAME — name of category. List contains playlists of this category and their links on Spotify;</li>
+    <li><code class="language-java">featured</code> — list of Spotify featured playlists with their links fetched from API;</li>
+    <li><code class="language-java">new</code> — list of new albums with artists and links on Spotify;</li>
+    <li><code class="language-java">categories</code> — list of all available categories on Spotify (just their names);</li>
+    <li><code class="language-java">playlists C_NAME</code>, where C_NAME — name of category. List contains playlists of this category and their links on Spotify;</li>
 </ul>
 
 <p>Full documentation how to work with api could be found at <a target="_blank" href="https://developer.spotify.com/documentation/web-api/reference/" rel="nofollow noopener noreferrer">https://developer.spotify.com/documentation/web-api/reference/</a>.<br>
-Object model: <a target="_blank" href="https://developer.spotify.com/documentation/web-api/reference/object-model/" rel="nofollow noopener noreferrer">https://developer.spotify.com/documentation/web-api/reference/object-model/</a></p>
+    Object model: <a target="_blank" href="https://developer.spotify.com/documentation/web-api/reference/object-model/" rel="nofollow noopener noreferrer">https://developer.spotify.com/documentation/web-api/reference/object-model/</a></p>
 
 <p>To get all categories, use <code class="language-java">https://api.spotify.com/v1/browse/categories</code><br>
-To get a playlist, use <code class="language-java">https://api.spotify.com/v1/browse/categories/{category_id}/playlists</code><br>
-To get new releases, use <code class="language-java">https://api.spotify.com/v1/browse/new-releases</code><br>
-To get featured playlists, use <code class="language-java">https://api.spotify.com/v1/browse/featured-playlists</code></p>
+    To get a playlist, use <code class="language-java">https://api.spotify.com/v1/browse/categories/{category_id}/playlists</code><br>
+    To get new releases, use <code class="language-java">https://api.spotify.com/v1/browse/new-releases</code><br>
+    To get featured playlists, use <code class="language-java">https://api.spotify.com/v1/browse/featured-playlists</code></p>
 
-<p>Pay attention to <code class="language-java">playlists</code> action. Make sure that inside the request you send <strong>category id</strong>, <strong>not category name</strong>! Category names can contain spaces or other invalid url symbols. So you should request category ids and names before the <code class="language-java">playlists</code> request and find the id by category name. If you cannot find the id, print "Unknown category name.".</p>
+<p>Pay attention to <code class="language-java">playlists</code> action. Make sure that inside the request you send <strong>category id</strong>, <strong>not category name</strong>! Category names can contain spaces or other invalid URL symbols. So you should request category ids and names before the <code class="language-java">playlists</code> request and find the id by category name. If the id format is correct but you cannot find it in the list of ids, print "Unknown category name.".</p>
 
-<p>In case of invalid category id in playlist request or other api error, the program should output the error message from the Spotify response. For example, if you get the response <code class="language-java">{"error":{"status":404,"message":"Specified id doesn't exist"}}</code>, you should print the following line: "Specified id doesn't exist".</p>
+<p>In case of invalid category id (contains invalid URL symbols) in playlist request or other API error, the program should output the error message from the Spotify response. For example, if you get the response <code class="language-java">{"error":{"status":404,"message":"Specified id doesn't exist"}}</code>, you should print the following line: "Specified id doesn't exist".</p>
 
 <p>Also, in this stage, you should read 2 server points from command line arguments:</p>
 
 <ul>
-	<li><code class="language-java">-access</code> argument should provide authorization server path. The default value should be <code class="language-java">https://accounts.spotify.com</code></li>
-	<li><code class="language-java">-resource</code> argument should provide api server path. The default value should be <code class="language-java">https://api.spotify.com</code></li>
+    <li><code class="language-java">-access</code> argument should provide authorization server path. The default value should be <code class="language-java">https://accounts.spotify.com</code></li>
+    <li><code class="language-java">-resource</code> argument should provide API server path. The default value should be <code class="language-java">https://api.spotify.com</code></li>
 </ul>
 
 <p>Make sure you replace constants to these argument values everywhere.</p>

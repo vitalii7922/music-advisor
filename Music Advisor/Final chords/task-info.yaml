@@ -1053,9 +1053,6 @@ files:
         }
     }
   learner_created: true
-- name: src/advisor/view.java
-  visible: true
-  learner_created: true
 - name: src/advisor/pagination/TurningMethods.java
   visible: true
   learner_created: true
@@ -1082,5 +1079,5 @@ status: Solved
 feedback:
   message: Congratulations! Continue on <a href="https://hyperskill.org/projects/62/stages/339/implement">JetBrains
     Academy</a>
-  time: Sat, 08 Aug 2020 12:32:05 UTC
+  time: Sun, 01 Nov 2020 19:19:12 UTC
 record: -1
