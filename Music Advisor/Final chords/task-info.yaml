@@ -1059,19 +1059,10 @@ files:
 - name: src/advisor/pagination/PageTurner.java
   visible: true
   learner_created: true
-- name: src/advisor/pagination/TurningPagesCategories.java
-  visible: true
-  learner_created: true
-- name: src/advisor/pagination/TurningPagesFeatured.java
-  visible: true
-  learner_created: true
-- name: src/advisor/pagination/TurningPagesNew.java
-  visible: true
-  learner_created: true
-- name: src/advisor/pagination/TurningPagesPlaylists.java
-  visible: true
-  learner_created: true
 - name: src/advisor/view/View.java
+  visible: true
+  learner_created: true
+- name: src/advisor/pagination/TurningPages.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/62/stages/339/implement
@@ -1079,5 +1070,5 @@ status: Solved
 feedback:
   message: Congratulations! Continue on <a href="https://hyperskill.org/projects/62/stages/339/implement">JetBrains
     Academy</a>
-  time: Tue, 03 Nov 2020 15:44:39 UTC
+  time: Tue, 03 Nov 2020 16:52:10 UTC
 record: -1

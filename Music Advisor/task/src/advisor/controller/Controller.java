@@ -34,6 +34,12 @@ public class Controller {
         this.clientSecret = SpotifyData.getClientSecret();
     }
 
+    /**
+     * @param accessServer Spotify API access server
+     * @param code for getting token
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void accessToken(String accessServer, String code) throws IOException, InterruptedException {
         System.out.println("code received");
         System.out.println("making http request for access_token...");
@@ -49,10 +55,14 @@ public class Controller {
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         setAccessToken(JsonParser.parseString(response.body()).getAsJsonObject().get("access_token").getAsString());
-        setAccess();
         System.out.println("Success!");
     }
 
+    /**
+     * @return send a request for getting new releases
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public List<String> getNewReleases() throws IOException, InterruptedException {
         JsonArray albumArray = JsonParser.parseString(sendGetRequest("new-releases"))
                 .getAsJsonObject().getAsJsonObject("albums")
@@ -70,6 +80,11 @@ public class Controller {
         return output;
     }
 
+    /**
+     * @return send a request for getting featured music
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public List<String> getFeatured() throws IOException, InterruptedException {
         JsonObject playlists = JsonParser.parseString(sendGetRequest("featured-playlists"))
                 .getAsJsonObject()
@@ -87,6 +102,12 @@ public class Controller {
         return new ArrayList<>(categoriesId.keySet());
     }
 
+    /**
+     * send request for getting categories
+     *
+     * @throws IOException
+     * @throws InterruptedException
+     */
     private void saveCategories() throws IOException, InterruptedException {
         categoriesId.clear();
         JsonObject categories = JsonParser.parseString(sendGetRequest("categories"))
@@ -97,6 +118,12 @@ public class Controller {
         }
     }
 
+    /**
+     * @param categoryName name of a category of music
+     * @return list of music
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public List<String> getPlaylists(String categoryName) throws IOException, InterruptedException {
         saveCategories();
         String categoryId;
@@ -122,6 +149,12 @@ public class Controller {
         return output;
     }
 
+    /**
+     * @param endpoint endpoint
+     * @return JSON
+     * @throws IOException
+     * @throws InterruptedException
+     */
     private String sendGetRequest(String endpoint) throws IOException, InterruptedException {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .header("Authorization", "Bearer " + getAccessToken())
@@ -145,6 +178,7 @@ public class Controller {
 
     private void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
+        setAccess();
     }
 
     public String getResourceServer() {

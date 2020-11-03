@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-03T15:44:32" hostname="DESKTOP-H0T0QGB" time="6.471">
+<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-03T16:52:03" hostname="DESKTOP-H0T0QGB" time="5.785">
   <properties/>
-  <testcase name="start" classname="MusicAdvisorTest" time="6.471"/>
+  <testcase name="start" classname="MusicAdvisorTest" time="5.785"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 > auth
 use this link to request the access code:
-http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 Tester: making requests to redirect uri: http://localhost:8080
 Tester: done request 1: Not found authorization code. Try again.
@@ -21,7 +21,7 @@ Success!
 Start test 2?[0m
 > auth
 use this link to request the access code:
-http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 Tester: making requests to redirect uri: http://localhost:8080
 Tester: done request 1: Not found authorization code. Try again.
@@ -49,7 +49,7 @@ Top Lists
 Start test 3?[0m
 > auth
 use this link to request the access code:
-http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 Tester: making requests to redirect uri: http://localhost:8080
 Tester: done request 1: Not found authorization code. Try again.
@@ -79,7 +79,7 @@ http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
 Start test 4?[0m
 > auth
 use this link to request the access code:
-http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 Tester: making requests to redirect uri: http://localhost:8080
 Tester: done request 1: Not found authorization code. Try again.
@@ -116,7 +116,7 @@ https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
 Start test 5?[0m
 > auth
 use this link to request the access code:
-http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 Tester: making requests to redirect uri: http://localhost:8080
 Tester: done request 1: Not found authorization code. Try again.

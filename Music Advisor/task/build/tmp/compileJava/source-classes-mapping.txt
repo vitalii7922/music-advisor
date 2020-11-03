@@ -1,22 +1,16 @@
-advisor/pagination/TurningPagesCategories.java
- advisor.pagination.TurningPagesCategories
 advisor/Main.java
  advisor.Main
 advisor/data/SpotifyData.java
  advisor.data.SpotifyData
 advisor/view/View.java
  advisor.view.View
-advisor/pagination/TurningPagesNew.java
- advisor.pagination.TurningPagesNew
+advisor/pagination/TurningPages.java
+ advisor.pagination.TurningPages
 advisor/pagination/PageTurner.java
  advisor.pagination.PageTurner
-advisor/pagination/TurningPagesPlaylists.java
- advisor.pagination.TurningPagesPlaylists
 advisor/pagination/TurningMethods.java
  advisor.pagination.TurningMethods
 advisor/server/Server.java
  advisor.server.Server
-advisor/pagination/TurningPagesFeatured.java
- advisor.pagination.TurningPagesFeatured
 advisor/controller/Controller.java
  advisor.controller.Controller

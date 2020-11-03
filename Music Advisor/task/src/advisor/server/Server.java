@@ -12,6 +12,12 @@ public class Server {
     private Server() {
     }
 
+    /**
+     * create and start server (if it's not started)
+     *
+     * @return
+     * @throws IOException
+     */
     public static String createAndStartServer() throws IOException {
         if (server == null) {
             HttpServer httpServer = null;
@@ -42,6 +48,13 @@ public class Server {
         return code;
     }
 
+    /**
+     * shows messages form server
+     *
+     * @param message message
+     * @param exchange exchange
+     * @throws IOException
+     */
     private static void renderMessage(String message, HttpExchange exchange) throws IOException {
         exchange.sendResponseHeaders(200, message.length());
         exchange.getResponseBody().write(message.getBytes());

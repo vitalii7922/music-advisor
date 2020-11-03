@@ -1,12 +1,13 @@
 package advisor.view;
 
 import advisor.controller.Controller;
-import advisor.pagination.*;
+import advisor.data.SpotifyData;
+import advisor.pagination.PageTurner;
+import advisor.pagination.TurningPages;
 import advisor.server.Server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -69,42 +70,69 @@ public class View {
         }
     }
 
+    /**
+     * get new releases from spotify API and open first page
+     *
+     * @throws IOException
+     * @throws InterruptedException
+     */
     private void takeNewReleases() throws IOException, InterruptedException {
         if (controller.isAccess()) {
             output = controller.getNewReleases();
-            pageTurner.setTurningMethods(new TurningPagesNew(elementsNumber, output));
+            pageTurner.setTurningMethods(new TurningPages(elementsNumber, output));
             pageTurner.turnPageForward();
         } else {
             System.out.println(DENY_ACCESS);
         }
     }
 
+    /**
+     * get featured music from spotify API and open first page if a client got a token from spotify API access server
+     *
+     * @throws IOException
+     * @throws InterruptedException
+     */
     private void takeFeatured() throws IOException, InterruptedException {
         if (controller.isAccess()) {
             output = controller.getFeatured();
-            pageTurner.setTurningMethods(new TurningPagesFeatured(elementsNumber, output));
+            pageTurner.setTurningMethods(new TurningPages(elementsNumber, output));
             pageTurner.turnPageForward();
         } else {
             System.out.println(DENY_ACCESS);
         }
     }
 
+    /**
+     *
+     * get categories of music from spotify API and open first page if a client got a token from spotify API access server
+     *
+     * @throws IOException
+     * @throws InterruptedException
+     */
     private void takeCategories() throws IOException, InterruptedException {
         if (controller.isAccess()) {
             output = controller.getCategories();
-            pageTurner.setTurningMethods(new TurningPagesCategories(elementsNumber, output));
+            pageTurner.setTurningMethods(new TurningPages(elementsNumber, output));
             pageTurner.turnPageForward();
         } else {
             System.out.println(DENY_ACCESS);
         }
     }
 
+    /**
+     * get a playlist according to categories from spotify API and open first page
+     * if a client got a token from spotify API access server
+     *
+     * @param option
+     * @throws IOException
+     * @throws InterruptedException
+     */
     private void takePlaylists(String option) throws IOException, InterruptedException {
         if (controller.isAccess()) {
             String[] command = option.split("\\s+");
             if (command.length > 1) {
                 output = controller.getPlaylists(option.substring(command[0].length() + 1));
-                pageTurner.setTurningMethods(new TurningPagesPlaylists(elementsNumber, output));
+                pageTurner.setTurningMethods(new TurningPages(elementsNumber, output));
                 pageTurner.turnPageForward();
             }
         } else {
@@ -112,9 +140,16 @@ public class View {
         }
     }
 
+    /**
+     * authorization on Spotify API
+     *
+     * @param accessServer Spotify API access server URL
+     * @return code for getting token
+     * @throws IOException
+     */
     private String doAuthentication(String accessServer) throws IOException {
         String url = accessServer + "/authorize?" +
-                "client_id=c272e24c020d428f848594eea7f5199d&" +
+                "client_id=" + SpotifyData.getClientId() +
                 "redirect_uri=http://localhost:8080&response_type=code";
         System.out.printf("use this link to request the access code:%n%s%n", url);
         System.out.println("waiting for code...");

@@ -2,7 +2,7 @@
 Start test 1[0m
 > auth
 +use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+‚http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 @Tester: making requests to redirect uri: http://localhost:8080
 BTester: done request 1: Not found authorization code. Try again.
@@ -18,7 +18,7 @@ Success!
 Start test 2[0m
 > auth
 +use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+‚http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 @Tester: making requests to redirect uri: http://localhost:8080
 BTester: done request 1: Not found authorization code. Try again.
@@ -47,7 +47,7 @@ Success!
 Start test 3[0m
 > auth
 +use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+‚http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 @Tester: making requests to redirect uri: http://localhost:8080
 BTester: done request 1: Not found authorization code. Try again.
@@ -78,7 +78,7 @@ Success!
 Start test 4[0m
 > auth
 +use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+‚http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 @Tester: making requests to redirect uri: http://localhost:8080
 BTester: done request 1: Not found authorization code. Try again.
@@ -116,7 +116,7 @@ Success!
 Start test 5[0m
 > auth
 +use this link to request the access code:
-ƒhttp://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199d&redirect_uri=http://localhost:8080&response_type=code
+‚http://127.0.0.1:45678/authorize?client_id=c272e24c020d428f848594eea7f5199dredirect_uri=http://localhost:8080&response_type=code
 waiting for code...
 @Tester: making requests to redirect uri: http://localhost:8080
 BTester: done request 1: Not found authorization code. Try again.
