@@ -6,10 +6,10 @@ The main entity of OAuth is the token, the secret code that should be sent with 
 so that the service is sure that you have enough rights to get information from API. <br/>
 Before starting the application you should go to the https://developer.spotify.com and create your application.
 To create an application:
-1. you should select Dashboard tab on the site, log in to Spotify, and click the button Create an App.
+1. you should select Dashboard tab on the site, log into Spotify, and click the button Create an App.
 Specify redirect_uri as http://localhost:8080<br/>
 When application is created you get client_id and client_secret.<br/>
-2. create package and SpotifyData.class in task/src/data package with fields CLIENT_ID, CLIENT_SECRET and getters respectively.<br/>
+2. Hardcode client_id and client_secret to CLIENT_ID, CLIENT_SECRET fields respectively in task/src/data package/SpotifyData.class.<br/>
 
 Example:
 ```Java
