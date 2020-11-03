@@ -5,6 +5,12 @@ import advisor.view.View;
 import java.io.IOException;
 
 public class Main {
+    /**
+     * @param args zeroth argument is access server URL, second argument is resource server URL and
+     *             fourth argument is number of pages
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws IOException, InterruptedException {
         String accessServer;
         String resourceServer;

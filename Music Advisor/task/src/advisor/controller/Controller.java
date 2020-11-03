@@ -1,5 +1,6 @@
 package advisor.controller;
 
+import advisor.data.SpotifyData;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -16,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Controller {
-    private static final String CLIENT_ID = "c272e24c020d428f848594eea7f5199d";
-    private static final String CLIENT_SECRET = "583af1b361fb47598bd14c9f1fdf386c";
+    private String clientId;
+    private String clientSecret;
     private final HttpClient client = HttpClient.newBuilder().build();
     private boolean access = false;
     private final Map<String, String> categoriesId = new LinkedHashMap<>();
@@ -28,6 +29,11 @@ public class Controller {
     private static final String EXTERNAL_URLS = "external_urls";
     private static final String SPOTIFY = "spotify";
 
+    public Controller() {
+        this.clientId = SpotifyData.getClientId();
+        this.clientSecret = SpotifyData.getClientSecret();
+    }
+
     public void accessToken(String accessServer, String code) throws IOException, InterruptedException {
         System.out.println("code received");
         System.out.println("making http request for access_token...");
@@ -35,8 +41,8 @@ public class Controller {
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .uri(URI.create(accessServer + "/api/token"))
                 .POST(HttpRequest.BodyPublishers.ofString(
-                        "client_id=" + CLIENT_ID +
-                                "&client_secret=" + CLIENT_SECRET +
+                        "client_id=" + clientId +
+                                "&client_secret=" + clientSecret +
                                 "&grant_type=authorization_code&" +
                                 code +
                                 "&redirect_uri=http://localhost:8080"))

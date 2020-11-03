@@ -3,15 +3,17 @@ package advisor.view;
 import advisor.controller.Controller;
 import advisor.pagination.*;
 import advisor.server.Server;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * render menu for a client
+ */
 public class View {
-    private final Controller controller = new Controller();
+    private Controller controller = new Controller(); //Controller layer
     private static final String DENY_ACCESS = "Please, provide access for application.";
     private String accessServer;
     private String resourceServer;
@@ -25,6 +27,12 @@ public class View {
         this.elementsNumber = elementsNumber;
     }
 
+    /**
+     * shows menu options
+     *
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void render() throws IOException, InterruptedException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         controller.setResourceServer(resourceServer);
@@ -52,9 +60,6 @@ public class View {
                 case "prev":
                     pageTurner.turnPageBackward();
                     break;
-                case "test":
-                    test();
-                    break;
                 default:
                     if (option.startsWith("playlists")) {
                         takePlaylists(option);
@@ -62,15 +67,6 @@ public class View {
                     break;
             }
         }
-    }
-
-    private void test() {
-        List<String> hello = new ArrayList<>();
-        hello.add("hello1\n");
-        hello.add("hello2\n");
-        output = hello;
-        pageTurner.setTurningMethods(new TurningPagesCategories(elementsNumber, output));
-        pageTurner.turnPageForward();
     }
 
     private void takeNewReleases() throws IOException, InterruptedException {

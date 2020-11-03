@@ -2,6 +2,8 @@ advisor/pagination/TurningPagesCategories.java
  advisor.pagination.TurningPagesCategories
 advisor/Main.java
  advisor.Main
+advisor/data/SpotifyData.java
+ advisor.data.SpotifyData
 advisor/view/View.java
  advisor.view.View
 advisor/pagination/TurningPagesNew.java
