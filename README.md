@@ -9,7 +9,7 @@ To create an application:
 1. you should select Dashboard tab on the site, log in to Spotify, and click the button Create an App.
 Specify redirect_uri as http://localhost:8080<br/>
 When application is created you get client_id and client_secret.<br/>
-2. create SpotifyData.class in task/src/data package with fields CLIENT_ID, CLIENT_SECRET and getters respectively.<br/>
+2. create package and SpotifyData.class in task/src/data package with fields CLIENT_ID, CLIENT_SECRET and getters respectively.<br/>
 
 Example:
 ```Java
