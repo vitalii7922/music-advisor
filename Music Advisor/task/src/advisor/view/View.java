@@ -150,7 +150,7 @@ public class View {
     private String doAuthentication(String accessServer) throws IOException {
         String url = accessServer + "/authorize?" +
                 "client_id=" + SpotifyData.getClientId() +
-                "redirect_uri=http://localhost:8080&response_type=code";
+                "&redirect_uri=http://localhost:8080&response_type=code";
         System.out.printf("use this link to request the access code:%n%s%n", url);
         System.out.println("waiting for code...");
         return Server.createAndStartServer();
