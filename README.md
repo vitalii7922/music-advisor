@@ -11,21 +11,6 @@ Specify redirect_uri as http://localhost:8080<br/>
 When application is created you get client_id and client_secret.<br/>
 2. Hardcode client_id and client_secret to CLIENT_ID, CLIENT_SECRET fields respectively in task/src/data package/SpotifyData.class.<br/>
 
-Example:
-```Java
-public class SpotifyData {
-    private static final String CLIENT_ID = "aaaaaa9999123124njndskjg324";
-    private static final String CLIENT_SECRET = "asdausih324235njknk34543";
-
-    public static String getClientId() {
-        return CLIENT_ID;
-    }
-
-    public static String getClientSecret() {
-        return CLIENT_SECRET;
-    }
-}
-```
 ## Description
 Spotify API is based on REST principles.
 
